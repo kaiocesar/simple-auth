@@ -12,17 +12,18 @@ module.exports = function(app, passport) {
 		res.render('signup', {message: req.flash('signupMessage')});
 	});
 
-	app.get('/profile', function(req,res){
-		res.render('profile', {
-			user: req.user // get the user out of session and pass to template
-		});
-	});
-
 	app.get('/logout', function(req,res){
 		req.logout();
 		res.redirect('/');
 	});
 
+
+	// AUTHENTICATION ROUTES
+	app.get('/profile', isLoggedIn,function(req,res){
+		res.render('profile', {
+			user: req.user // get the user out of session and pass to template
+		});
+	});
 
 	// POST
 	app.post('/signup', passport.authenticate('local-signup', {
@@ -46,5 +47,5 @@ function isLoggedIn(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next();
 	} 
-	res.redirect('/');
+	res.redirect('/login');
 }
