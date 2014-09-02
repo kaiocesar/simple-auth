@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
 	});
 
 
-	// AUTHENTICATION ROUTES
+	// AUTHENTICATED ROUTES
 	app.get('/profile', isLoggedIn,function(req,res){
 		res.render('profile', {
 			user: req.user // get the user out of session and pass to template

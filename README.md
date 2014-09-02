@@ -1,4 +1,6 @@
-simple-auth
+Autenticação simples com Passport.js e MongoDB
 ===========
 
-Simple authenticate Node.js (Test)
+autor: Kaio Cesar
+
+
